@@ -3,6 +3,11 @@
 #include <cstdlib>
 #include <string>
 
+#ifdef _WIN32
+#define setenv(name, value, overwrite) _putenv_s(name, value)
+#define unsetenv(name) _putenv_s(name, "")
+#endif
+
 class bbb_utils_env : public c74::min::object<bbb_utils_env> {
 public:
 	MIN_DESCRIPTION{"Read and write environment variables"};

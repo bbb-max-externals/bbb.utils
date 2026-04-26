@@ -42,7 +42,7 @@ macro(bbb_add_external)
         set(C74_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/../../../externals")
     endif()
 
-    # --- universal binary (macOS) ---
+    # --- universal binary (macOS only) ---
     if(APPLE AND NOT CMAKE_OSX_ARCHITECTURES)
         set(CMAKE_OSX_ARCHITECTURES "x86_64;arm64" CACHE STRING "macOS architecture" FORCE)
     endif()
