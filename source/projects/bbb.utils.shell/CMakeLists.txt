@@ -15,4 +15,12 @@ set(SOURCE_FILES
 
 add_library(${PROJECT_NAME} MODULE ${SOURCE_FILES})
 
+set(HELP_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}.maxhelp")
+set(HELP_DEST "${CMAKE_CURRENT_SOURCE_DIR}/../../../help/${PROJECT_NAME}.maxhelp")
+if(EXISTS "${HELP_SOURCE}")
+	add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
+		COMMAND ${CMAKE_COMMAND} -E copy_if_different "${HELP_SOURCE}" "${HELP_DEST}"
+	)
+endif()
+
 include(${C74_MIN_API_DIR}/script/min-posttarget.cmake)
