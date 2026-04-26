@@ -1,1 +1,1 @@
-bbb_add_external(MACOS_ONLY)
+bbb_add_external()

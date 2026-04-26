@@ -12,6 +12,7 @@ Max/MSP utility externals package.
 | `bbb.utils.env` | Get / set / unset environment variables |
 | `bbb.utils.json` | JSON parse / stringify / query (nlohmann/json) |
 | `bbb.utils.path` | Path join / split / resolve / basename / dirname |
+| `bbb.utils.regex` | Regular expression search / replace / match / groups |
 | `bbb.utils.text` | String split / join / trim / replace / upper / lower / pad |
 | `bbb.utils.uuid` | Generate UUID v4 strings |
 
@@ -25,7 +26,6 @@ Max/MSP utility externals package.
 | `bbb.utils.http` | HTTP client using curl (GET / POST / PUT / DELETE) |
 | `bbb.utils.notify` | macOS notification center |
 | `bbb.utils.osascript` | Execute AppleScript / JXA |
-| `bbb.utils.regex` | POSIX regex match / replace |
 | `bbb.utils.shell` | Execute shell commands |
 
 ## Build
