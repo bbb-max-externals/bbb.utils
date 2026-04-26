@@ -67,3 +67,11 @@ Copy the entire `bbb.utils/` directory to Max's packages folder:
 This project uses the [max-external](https://github.com/2bbb/max-external) skill for scaffolding and build configuration.
 
 See `.agents/skills/max-external/` for project conventions, CMake macros, and common pitfalls.
+
+## Acknowledgements
+
+This project was deeply inspired by [aka.objects](http://akamatsu.org/aka/max/objects/) by [Masayuki Akamatsu](https://github.com/akamatsu) — the definitive collection of Max/MSP utility externals for macOS that has served the community for over a decade. His pioneering work on shell execution, file watching, clipboard access, and system integration showed what Max externals could be, and directly shaped the design of bbb.utils.
+
+## License
+
+[MIT](LICENSE)
