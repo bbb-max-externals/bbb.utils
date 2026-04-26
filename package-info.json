@@ -1,6 +1,6 @@
 {
     "title": "bbb.utils",
-    "description": "Utility externals for Max/MSP: shell execution, AppleScript/JXA execution",
+    "description": "Utility externals for Max/MSP: shell, HTTP, text, JSON, hash, base64, clipboard, notifications, and more",
     "author": "2bit",
     "website": "",
     "extends": "",
@@ -18,16 +18,19 @@
         }
     },
     "filelist": {
+        "externals/bbb.utils.base64.mxo": {},
         "externals/bbb.utils.clipboard.mxo": {},
         "externals/bbb.utils.env.mxo": {},
         "externals/bbb.utils.filewatch.mxo": {},
         "externals/bbb.utils.hash.mxo": {},
+        "externals/bbb.utils.http.mxo": {},
         "externals/bbb.utils.json.mxo": {},
         "externals/bbb.utils.notify.mxo": {},
+        "externals/bbb.utils.osascript.mxo": {},
         "externals/bbb.utils.path.mxo": {},
         "externals/bbb.utils.regex.mxo": {},
         "externals/bbb.utils.shell.mxo": {},
-        "externals/bbb.utils.osascript.mxo": {},
+        "externals/bbb.utils.text.mxo": {},
         "externals/bbb.utils.uuid.mxo": {}
     }
 }
