@@ -1,8 +1,0 @@
-/Users/2bit/prog/maxproj/bbb.utils/build/CMakeFiles/edit_cache.dir
-/Users/2bit/prog/maxproj/bbb.utils/build/CMakeFiles/rebuild_cache.dir
-/Users/2bit/prog/maxproj/bbb.utils/build/source/projects/bbb.utils.shell/CMakeFiles/bbb.utils.shell.dir
-/Users/2bit/prog/maxproj/bbb.utils/build/source/projects/bbb.utils.shell/CMakeFiles/edit_cache.dir
-/Users/2bit/prog/maxproj/bbb.utils/build/source/projects/bbb.utils.shell/CMakeFiles/rebuild_cache.dir
-/Users/2bit/prog/maxproj/bbb.utils/build/source/projects/bbb.utils.osascript/CMakeFiles/bbb.utils.osascript.dir
-/Users/2bit/prog/maxproj/bbb.utils/build/source/projects/bbb.utils.osascript/CMakeFiles/edit_cache.dir
-/Users/2bit/prog/maxproj/bbb.utils/build/source/projects/bbb.utils.osascript/CMakeFiles/rebuild_cache.dir

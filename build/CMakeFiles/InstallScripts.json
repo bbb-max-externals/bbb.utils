@@ -1,9 +1,0 @@
-{
-	"InstallScripts" : 
-	[
-		"/Users/2bit/prog/maxproj/bbb.utils/build/cmake_install.cmake",
-		"/Users/2bit/prog/maxproj/bbb.utils/build/source/projects/bbb.utils.shell/cmake_install.cmake",
-		"/Users/2bit/prog/maxproj/bbb.utils/build/source/projects/bbb.utils.osascript/cmake_install.cmake"
-	],
-	"Parallel" : false
-}
