@@ -1,0 +1,24 @@
+{
+    "title": "bbb.utils",
+    "description": "Utility externals for Max/MSP: shell execution, AppleScript/JXA execution",
+    "author": "2bit",
+    "website": "",
+    "extends": "",
+    "extensible": 0,
+    "homepatcher": "",
+    "max_version_min": "8.0",
+    "os": {
+        "macintosh": {
+            "externals": [
+                "externals/"
+            ],
+            "help": [
+                "help/"
+            ]
+        }
+    },
+    "filelist": {
+        "externals/bbb.utils.shell.mxo": {},
+        "externals/bbb.utils.osascript.mxo": {}
+    }
+}
