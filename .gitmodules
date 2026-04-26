@@ -9,3 +9,7 @@
 	path = .agents/skills/max-patgen
 	url = git@github.com:2bbb/max-patgen.git
 	branch = main
+[submodule ".agents/skills/max-external-githubactions"]
+	path = .agents/skills/max-external-githubactions
+	url = git@github.com:2bbb/max-external-githubactions.git
+	branch = main
