@@ -19,11 +19,18 @@
 
 macro(bbb_add_external)
     cmake_parse_arguments(ARG
-        "NO_HELP_COPY"
+        "NO_HELP_COPY;MACOS_ONLY;WIN32_ONLY"
         "RPATH"
         "DEPS;INCLUDES;SOURCES"
         ${ARGN}
     )
+
+    if(ARG_MACOS_ONLY AND NOT APPLE)
+        return()
+    endif()
+    if(ARG_WIN32_ONLY AND NOT WIN32)
+        return()
+    endif()
 
     # --- min-api path resolution ---
     if(NOT DEFINED C74_MIN_API_DIR)
