@@ -18,7 +18,16 @@
         }
     },
     "filelist": {
+        "externals/bbb.utils.clipboard.mxo": {},
+        "externals/bbb.utils.env.mxo": {},
+        "externals/bbb.utils.filewatch.mxo": {},
+        "externals/bbb.utils.hash.mxo": {},
+        "externals/bbb.utils.json.mxo": {},
+        "externals/bbb.utils.notify.mxo": {},
+        "externals/bbb.utils.path.mxo": {},
+        "externals/bbb.utils.regex.mxo": {},
         "externals/bbb.utils.shell.mxo": {},
-        "externals/bbb.utils.osascript.mxo": {}
+        "externals/bbb.utils.osascript.mxo": {},
+        "externals/bbb.utils.uuid.mxo": {}
     }
 }
