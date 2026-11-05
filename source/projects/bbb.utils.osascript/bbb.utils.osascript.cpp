@@ -16,7 +16,7 @@ public:
 	c74::min::inlet<> input{this, "(anything) exec/run messages"};
 	c74::min::outlet<> result_out{this, "(symbol) script result"};
 	c74::min::outlet<> stderr_out{this, "(symbol) stderr"};
-	c74::min::outlet<> status_out{this, "(anything) done / error <msg>"};
+	c74::min::outlet<> status_out{this, "(anything) done <code> / error <msg>"};
 
 	c74::min::attribute<int> language_attr{
 		this, "language", 0,
@@ -122,10 +122,6 @@ private:
 	}
 
 	void output_result(const bbb::process_result &result) {
-		c74::min::atoms status;
-		status.push_back(c74::min::symbol("done"));
-		status_out.send(status);
-
 		auto trimmed_err = trim(result.stderr_output);
 		if(!trimmed_err.empty()) {
 			stderr_out.send(c74::min::symbol(trimmed_err));
@@ -135,6 +131,11 @@ private:
 		if(!trimmed_out.empty()) {
 			result_out.send(c74::min::symbol(trimmed_out));
 		}
+
+		c74::min::atoms status;
+		status.push_back(c74::min::symbol("done"));
+		status.push_back(result.exit_code);
+		status_out.send(status);
 	}
 
 	void send_error(const std::string &msg) {

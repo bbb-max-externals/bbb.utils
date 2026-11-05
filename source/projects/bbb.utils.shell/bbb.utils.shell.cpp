@@ -119,11 +119,6 @@ private:
 	}
 
 	void output_result(const bbb::process_result &result) {
-		c74::min::atoms status;
-		status.push_back(c74::min::symbol("done"));
-		status.push_back(result.exit_code);
-		status_out.send(status);
-
 		auto trimmed_err = trim(result.stderr_output);
 		if(!trimmed_err.empty()) {
 			stderr_out.send(c74::min::symbol(trimmed_err));
@@ -133,6 +128,11 @@ private:
 		if(!trimmed_out.empty()) {
 			stdout_out.send(c74::min::symbol(trimmed_out));
 		}
+
+		c74::min::atoms status;
+		status.push_back(c74::min::symbol("done"));
+		status.push_back(result.exit_code);
+		status_out.send(status);
 	}
 
 	void send_error(const std::string &msg) {
