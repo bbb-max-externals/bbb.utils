@@ -4,6 +4,7 @@
 #include <vector>
 #include <array>
 #include <stdexcept>
+#include <cerrno>
 #include <unistd.h>
 #include <sys/wait.h>
 #include <poll.h>
@@ -18,6 +19,19 @@ struct process_result {
 
 inline auto execute(const std::string &executable,
 					const std::vector<std::string> &args) -> process_result {
+	// Build argv before fork(): the child between fork() and execvp() must only
+	// call async-signal-safe functions. std::vector::push_back may call malloc,
+	// which can deadlock in a multithreaded host (e.g. Max) if another thread
+	// held the heap lock at fork() time. The c_str() pointers stay valid in the
+	// forked child via copy-on-write.
+	std::vector<char *> argv;
+	argv.reserve(args.size() + 2);
+	argv.push_back(const_cast<char *>(executable.c_str()));
+	for(const auto &arg : args) {
+		argv.push_back(const_cast<char *>(arg.c_str()));
+	}
+	argv.push_back(nullptr);
+
 	std::array<int, 2> stdout_pipe{};
 	std::array<int, 2> stderr_pipe{};
 
@@ -46,13 +60,6 @@ inline auto execute(const std::string &executable,
 		dup2(stderr_pipe[1], STDERR_FILENO);
 		close(stdout_pipe[1]);
 		close(stderr_pipe[1]);
-
-		std::vector<char *> argv;
-		argv.push_back(const_cast<char *>(executable.c_str()));
-		for(const auto &arg : args) {
-			argv.push_back(const_cast<char *>(arg.c_str()));
-		}
-		argv.push_back(nullptr);
 
 		execvp(executable.c_str(), argv.data());
 		_exit(127);
@@ -88,7 +95,10 @@ inline auto execute(const std::string &executable,
 		if(nfds == 0) break;
 
 		int ret = poll(fds.data(), nfds, 1000);
-		if(ret < 0) break;
+		if(ret < 0) {
+			if(errno == EINTR) continue;
+			break;
+		}
 
 		int idx = 0;
 		if(stdout_open) {
@@ -96,7 +106,7 @@ inline auto execute(const std::string &executable,
 				ssize_t n = read(stdout_pipe[0], buffer.data(), buffer.size());
 				if(n > 0) {
 					stdout_buf.append(buffer.data(), n);
-				} else {
+				} else if(n == 0 || errno != EINTR) {
 					stdout_open = false;
 				}
 			}
@@ -107,7 +117,7 @@ inline auto execute(const std::string &executable,
 				ssize_t n = read(stderr_pipe[0], buffer.data(), buffer.size());
 				if(n > 0) {
 					stderr_buf.append(buffer.data(), n);
-				} else {
+				} else if(n == 0 || errno != EINTR) {
 					stderr_open = false;
 				}
 			}
